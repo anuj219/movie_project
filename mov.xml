@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE movies[
+    <!ELEMENT movies (movie+)>
+    <!ELEMENT movie (title, year, director, genre, rating, img)>
+    <!ELEMENT title (#PCDATA)>
+    <!ELEMENT year (#PCDATA)>
+    <!ELEMENT director (#PCDATA)>
+    <!ELEMENT genre (#PCDATA)>
+    <!ELEMENT rating (#PCDATA)>
+    <!ELEMENT img (CDATA)>
+    <!-- doing     (#PCDATA | CDATA) wasnt working for me here-->
+]>
+<movies>
+<!-- xampp is a proxy server, x-stands for cross platform, a- stands for apache, m-for mysql, p - php, p-perl  -->
+<!--  -->
+    <movie>
+        <title> Iron Man</title>
+        <year>2008</year>   
+        <director> Christopher Nolan</director>
+        <genre>Action, Crime, Drama</genre>
+        <rating>9.0</rating>
+        <img><![CDATA[https://m.media-amazon.com/images/M/MV5BMTczNTI2ODUwOF5BMl5BanBnXkFtZTcwMTU0NTIzMw@@._V1_.jpg]]></img>
+    </movie>
+    <movie>
+        <title>The Dark Knight</title>
+        <year>2008</year>
+        <director>Christopher Nolan</director>
+        <genre>Action, Crime, Drama</genre>
+        <rating>9.0</rating>
+        <img><![CDATA[https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_.jpg]]></img>
+    </movie>
+ 
+    <movie>
+        <title>Forrest Gump</title>
+        <year>1994</year>
+        <director>Robert Zemeckis</director>
+        <genre>Drama, Romance</genre>
+        <rating>8.8</rating>
+        <img><![CDATA[https://m.media-amazon.com/images/S/pv-target-images/2d0c9e38968936e6711c7fb2bc7895b82d8bb9178b5a854e14dffa4b17b88487.jpg]]> </img>
+    </movie>
+    <movie>
+        <title>Inception</title>
+        <year>2010</year>
+        <director>Christopher Nolan</director>
+        <genre>Action, Adventure, Sci-Fi</genre>
+        <rating>8.8</rating>
+        <img><![CDATA[https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781608870158/inception-9781608870158_lg.jpg]]></img>
+    </movie>
+
+    <movie>
+        <title>The Matrix</title>
+        <year>1999</year>
+        <director>Lana Wachowski, Lilly Wachowski</director>
+        <genre>Action, Sci-Fi</genre>
+        <rating>8.7</rating>
+        <img><![CDATA[https://m.media-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg]]></img>
+    </movie>
+
+
+</movies>
