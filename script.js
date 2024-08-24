@@ -21,7 +21,7 @@ $(document).ready(function () {
                 // .find() : used to get the descendants of each element in the current set of matched elements,
                 // filtered by a selector, jQuery object, or element34.
                 // each is a for loop for a each movie tag
-                const title = $(this).find('title').text();    // innerText
+                const title = $(this).find('title').text();    // innerText         
                 const year = $(this).find('year').text();
                 const dir = $(this).find('director').text();
                 const gen = $(this).find('genre').text();

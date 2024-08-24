@@ -10,7 +10,11 @@ restart xampp
 done
 
 
+innerText - js
+.text() - jquery
 
+innerHTML - js
+.html()  - Jquery
 
 
 
