@@ -7,25 +7,22 @@
 // AJAX operations are asynchronous, meaning they don’t block the execution of other scripts
 
 // get means firing an http request - either get or post - so it requests server(xampp) to fetch xml data
-function loadData() {
+
+
+function loadData(){
     $.ajax({
-        type: "GET",  
-        url: "mov.xml",     // The URL to which the request is sent. In this case, it’s the path to the XML file.
+        type: "GET",
+        url: "mov.xml",
         dataType: "xml",
-        // Sends an HTTP GET request to fetch mov.xml from server(local or any) and expects server response in an XML format.
+        // Sends an HTTP GET request to fetch mov.xml and expects an XML response.
         success: function (xml) {
             let mov_arr = [];
 
-            // $(xml): Wraps the entire XML data in a jQuery object.
-            $(xml).find('movie').each(function () {
-                // .find('movie'): Searches for all <movie> elements within the XML.
+            $(xml).find('movie').each(function() {
                 // .find() : used to get the descendants of each element in the current set of matched elements,
-                // filtered by a selector, jQuery object, or element.
-                // .each(function () { ... }): For each <movie> element found, execute the provided function.
+                // filtered by a selector, jQuery object, or element34.
                 // each is a for loop for a each movie tag
-                const title = $(this).find('title').text();    // innerText 
-                // $(this): Refers to the current <movie> element being processed in the iteration.
-                // Wrapping this with $() (i.e., $(this)) converts it into a jQuery object, allowing you to use jQuery methods on it.        
+                const title = $(this).find('title').text();    // innerText         
                 const year = $(this).find('year').text();
                 const dir = $(this).find('director').text();
                 const gen = $(this).find('genre').text();
@@ -33,9 +30,8 @@ function loadData() {
                 const img = $(this).find('img').text();
                 const cast = $(this).find('cast').text();
                 const desc = $(this).find('description').text();
-                const trail = $(this).find('trailer').text();
 
-                mov_arr.push({ title, year, dir, gen, rating, img, cast, desc, trail });
+                mov_arr.push({ title, year, dir, gen, rating, img, cast, desc });
                 //This line creates an object with properties title, year, dir, gen, rating, and img.
                 // The object is then added to the mov_arr array using the push method.
 
@@ -49,25 +45,21 @@ function loadData() {
             // use this function for displaying all movies either sorted/ non-sorted whatever 
             function dis(mov_arr) {
                 mov_arr.forEach(i => {
-                    // The append() method in jQuery is used to insert content to the end of the selected elements.
-                    // works like .innerHTML += in javascript
                     $('#movie_list').append(`
                     <li class="movie-item">
-                        <h3 class="title content info">${i.title}</h3>
-                        <img class="image content info" src="${i.img}" alt="${i.title}">
+                        <h3 class="title content common">${i.title}</h3>
+                        <img class="image content common" src="${i.img}" alt="${i.title}">
                         <p class="year content common">Year: ${i.year}</p>
                         <p class="dir content common">Director: ${i.dir}</p>
                         <p class="genre content common">Genre: ${i.gen}</p>
                         <div class="mov_rating content common"><p style="margin-right:30px; margin-bottom:10px; display:inline">Rating: ${i.rating}</p><i class="fa fa-star" aria-hidden="true"></i></i></div>
                         <p class="cast content2 common">Cast: ${i.cast}</p>
                         <p class="desc content2 common">Description: ${i.desc}</p>
-                        <iframe class="trail content2 common trailer" src="${i.trail}" allow="autoplay"></p>
                     </li>
                 `);
                 }
                 );
             }
-    
 
             dis(mov_arr);           // when page loads , non-ordered movies list
 
@@ -110,6 +102,7 @@ function loadData() {
 
             //  copilots code for search bar
             // on can help to use multiple event listeners
+            // 
             $('#search_box').on('keyup click', function () {
                 const input1 = $(this).val().toLowerCase();
                 const filteredMovies = mov_arr.filter(i =>
@@ -139,12 +132,10 @@ function loadData() {
                     $('.movie-item').css('display', 'none');
                     $(this).css('display', 'flex').addClass('active');
                     $(this).children('.content2').css({ 'display': 'block' });
-                    $(this).children('.trailer').css({ 'position': 'absolute' });
                 }
             });
-            // event delegation in action above
-            // Event delegation works by attaching the event listener to a parent element (in this case, #movie_list) that is not removed or replaced. The parent element listens for events that bubble up from its child elements.
-            //  When an event occurs on a child element that matches the specified selector (e.g., .movie-item), the event handler is executed.
+            // event delegation in action below
+            // Event delegation works by attaching the event listener to a parent element (in this case, #movie_list) that is not removed or replaced. The parent element listens for events that bubble up from its child elements. When an event occurs on a child element that matches the specified selector (e.g., .movie-item), the event handler is executed.
 
 
         },  // success code ends here (function ends)
@@ -159,7 +150,7 @@ $(document).ready(function () {
     loadData();
 });
 
-$('#home').click(function () {
+$('#home').click(function (){
     $('#movie_list').empty();
     loadData();
 });
